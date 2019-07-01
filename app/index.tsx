@@ -8,7 +8,7 @@ import I18n from '@kevinwang0316/i18n';
 import App from './components/App';
 import configureStore from './store/ConfigureStore';
 import './styles/index.global.css';
-import registerServiceWorker from './registerServiceWorker';
+import registerServiceWorker from '../registerServiceWorker';
 import { DEFAULT_LANGUAGE } from './config';
 import dict from './Dict';
 
@@ -18,12 +18,6 @@ const { store, persistor } = configureStore();
 I18n.setDefaultLanguage(DEFAULT_LANGUAGE);
 I18n.setDictionary(dict);
 
-// ReactDOM.render(
-//   <Provider store={store}>
-//     <App />
-//   </Provider>,
-//   document.getElementById('app')
-// );
 const render = (Component) => {
   ReactDOM.render(
     <Provider store={store}>
