@@ -1,9 +1,10 @@
 export const FETCH_POSTS_SUCCESS = 'fetchPostsSuccess';
+export const ADD_NEW_POST_SUCCESS = 'addNewPostSuccess';
 
 export interface PostType {
-  id: number;
+  id?: number;
   title: string;
-  date: string;
+  date?: string;
   content: string;
 }
 
@@ -12,4 +13,5 @@ export type PostsType = PostType[] | null;
 export interface PostsActionType {
   type: string;
   posts?: PostsType;
+  post?: PostType;
 }
