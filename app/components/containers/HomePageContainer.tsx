@@ -3,8 +3,18 @@ import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 
+import { AppState } from '../../store/ConfigureStore';
+import { PostsType } from '../../store/Posts/types';
+import { PostCountType } from '../../store/PostCount/types';
+import { fetchPosts as fetchPostsAction } from '../../store/Posts/actions';
+import { fetchPostCount as fetchPostCountAction } from '../../store/PostCount/actions';
+import { MAX_POSTS_AMOUNT } from '../../config';
+
 interface Props {
-  
+  posts: PostsType;
+  postCount: PostCountType;
+  fetchPosts: (offset: number) => void;
+  fetchPostCount: Function;
 }
 
 const useStyles = makeStyles({
@@ -22,43 +32,25 @@ const useStyles = makeStyles({
   },
 });
 
-const HomePage = () => {
-  useEffect(() => {
-    if (!user) currentAuthenticatedUser();
-  });
+const HomePage = ({
+  posts = null, postCount = null, fetchPosts, fetchPostCount,
+}: Props) => {
   const classes = useStyles({});
+  useEffect(() => {
+    if (!posts) fetchPosts(0);
+    if (!postCount) fetchPostCount();
+  });
 
   return (
     <div className={classes.rootDiv}>
-      <div className={classes.cardContainer}>
-        <div className={classes.cardContainer}>
-          <WorkflowCountCard />
-          <InstanceCountCard />
-        </div>
-        <div className={classes.cardContainer}>
-          <PublisherCountCard />
-          <HealthScoreCard />
-        </div>
-      </div>
-      <Grid container>
-        <Grid item md={6} sm={12} xs={12}><WorkflowRunInstanceChart /></Grid>
-        <Grid item md={6} sm={12} xs={12}><WorkflowLocationChart /></Grid>
-      </Grid>
-      <Grid container alignContent="center" style={{ paddingLeft: 20 }}>
-        <Grid item lg={4} md={5} sm={6} xs={12}><TopPublishersList /></Grid>
-        <Grid item lg={4} md={7} sm={6} xs={12}><WorkflowUseChart /></Grid>
-        <Grid item lg={4} md={12} sm={12} xs={12}><WorkflowActionUseWordCloud /></Grid>
-      </Grid>
+      aaa
     </div>
 
   );
 };
 
 /* istanbul ignore next */
-const mapStateToProps = (state: AppState) => ({ user: state.user });
+const mapStateToProps = ({ posts, postCount }: AppState) => ({ posts, postCount });
 /* istanbul ignore next */
-const mapDispatchToProps = { currentAuthenticatedUser: currentAuthenticatedUserAction };
-export default withAuthenticator(
-  connect(mapStateToProps, mapDispatchToProps)(memo(HomePage)),
-  amplifyAuthSignOption,
-);
+const mapDispatchToProps = { fetchPostCount: fetchPostCountAction, fetchPosts: fetchPostsAction };
+export default connect(mapStateToProps, mapDispatchToProps)(memo(HomePage));
