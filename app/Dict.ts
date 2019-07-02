@@ -7,6 +7,7 @@ interface Dictionary {
 const dict: Dictionary = {
   'en-US': {
     appName: 'My Blog App',
+    postListTitle: 'Post List',
   },
 };
 
