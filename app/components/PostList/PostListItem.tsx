@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import {
-  List, ListItem, Divider, ListItemText, Typography, ListItemIcon, Collapse,
+  List, ListItem, Divider, ListItemText, Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -8,7 +8,7 @@ import { PostType } from '../../store/Posts/types';
 
 interface Props {
   post: PostType;
-  handleClick: (postId: number) => void;
+  handleClick: (post: PostType) => void;
 }
 
 const useStyles = makeStyles({
@@ -28,14 +28,14 @@ const useStyles = makeStyles({
   },
 });
 const MAX_CONTENT_LENGTH = 300;
-const turncate = (text: string): string => text.length < 100 ? text : `${text.slice(0, MAX_CONTENT_LENGTH)}...`;
+const turncate = (text: string): string => text.length < MAX_CONTENT_LENGTH ? text : `${text.slice(0, MAX_CONTENT_LENGTH)}...`;
 
 export const PostListItem = ({ post, handleClick }: Props) => {
   const classes = useStyles({});
 
   return (
     <List className={classes.list}>
-      <ListItem alignItems="center" button onClick={() => handleClick(post.id)}>
+      <ListItem alignItems="center" button onClick={() => handleClick(post)}>
         <ListItemText
           primary={(
             <Typography

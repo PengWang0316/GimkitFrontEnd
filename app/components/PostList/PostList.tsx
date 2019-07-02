@@ -1,13 +1,16 @@
-import React, { memo, useEffect, useCallback } from 'react';
+import React, {
+  memo, useEffect, useCallback, useState,
+} from 'react';
 import { connect } from 'react-redux';
 import { Typography, Paper } from '@material-ui/core';
 import I18n from '@kevinwang0316/i18n';
 import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@kevinwang0316/react-materialui-pagination';
 
+import ReadDialog from './Dialogs/ReadDialog';
 import PostListItem from './PostListItem';
 import { AppState } from '../../store/ConfigureStore';
-import { PostsType } from '../../store/Posts/types';
+import { PostsType, PostType } from '../../store/Posts/types';
 import { PostCountType } from '../../store/PostCount/types';
 import { fetchPosts as fetchPostsAction } from '../../store/Posts/actions';
 import { fetchPostCount as fetchPostCountAction } from '../../store/PostCount/actions';
@@ -30,13 +33,31 @@ const useStyles = makeStyles({
 export const PostList = ({
   posts = null, postCount = null, fetchPosts, fetchPostCount,
 }: Props) => {
+  const [isOpenRead, setIsOpenRead] = useState(false);
+  const [currentPost, setCurrentPost] = useState(null);
+  const [offset, setOffset] = useState(0);
   const classes = useStyles({});
+
+  // Initial fetching
   useEffect(() => {
     if (!posts) fetchPosts(0);
     if (postCount === null) fetchPostCount();
   });
 
-  const itemClickCallback = useCallback((postId: number) => console.log(postId), []);
+  // callback for the reading dialog display
+  const handleReadingClose = () => setIsOpenRead(state => !state);
+
+  // callback for click each item
+  const itemClickCallback = useCallback((post: PostType) => {
+    setCurrentPost(post);
+    handleReadingClose();
+  }, []);
+
+  // callback for the pagination button click
+  const handlePaginationClick = useCallback((newOffset: number) => {
+    console.log(newOffset);
+    setOffset(newOffset);
+  }, []);
 
   return (
     <div className={classes.rootPaper}>
@@ -50,14 +71,19 @@ export const PostList = ({
           handleClick={itemClickCallback}
         />
       ))}
-      {/* {postCount && (
+      {postCount && (
         <Pagination
           offset={offset}
           limit={MAX_POSTS_AMOUNT}
           total={postCount}
-          onClick={onPageNumberClick}
+          onClick={handlePaginationClick}
         />
-      )} */}
+      )}
+      <ReadDialog
+        post={currentPost}
+        isOpen={isOpenRead}
+        handleClose={handleReadingClose}
+      />
     </div>
   );
 };
