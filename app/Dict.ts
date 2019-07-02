@@ -8,6 +8,13 @@ const dict: Dictionary = {
   'en-US': {
     appName: 'My Blog App',
     postListTitle: 'Post List',
+    close: 'Close',
+    save: 'Save',
+    cancel: 'Cancel',
+    title: 'Title',
+    emptyContent: 'Content is loading....',
+    addPost: 'Add Post',
+    addPostTitle: 'Add a new post',
   },
 };
 
