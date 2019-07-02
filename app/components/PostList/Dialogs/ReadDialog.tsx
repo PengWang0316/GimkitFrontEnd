@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, memo } from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {
   Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
@@ -46,4 +46,4 @@ export const ReadingDialog = ({ post, handleClose, isOpen = false }: Props) => {
   );
 };
 
-export default ReadingDialog;
+export default memo(ReadingDialog);
