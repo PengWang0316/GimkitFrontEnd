@@ -3,6 +3,7 @@ import {
   List, ListItem, Divider, ListItemText, Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import parse from 'html-react-parser';
 
 import { PostType } from '../../store/Posts/types';
 
@@ -26,6 +27,10 @@ const useStyles = makeStyles({
     display: 'inline',
     fontWeight: 'bold',
   },
+  itemText: {
+    maxHeight: 200,
+    overflow: 'hidden',
+  },
 });
 const MAX_CONTENT_LENGTH = 300;
 const turncate = (text: string): string => text.length < MAX_CONTENT_LENGTH ? text : `${text.slice(0, MAX_CONTENT_LENGTH)}...`;
@@ -37,6 +42,7 @@ export const PostListItem = ({ post, handleClick }: Props) => {
     <List className={classes.list}>
       <ListItem alignItems="center" button onClick={() => handleClick(post)}>
         <ListItemText
+          className={classes.itemText}
           primary={(
             <Typography
               component="span"
@@ -55,7 +61,7 @@ export const PostListItem = ({ post, handleClick }: Props) => {
                 className={classes.inline}
                 color="textPrimary"
               >
-                {turncate(post.content)}
+                {parse(turncate(post.content))}
               </Typography>
             </Fragment>
           )}

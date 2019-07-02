@@ -5,6 +5,8 @@ import {
 } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import I18n from '@kevinwang0316/i18n';
+// Sanitaize the content
+import parse from 'html-react-parser';
 
 import { PostType } from '../../../store/Posts/types';
 
@@ -25,6 +27,7 @@ export const ReadingDialog = ({ post, handleClose, isOpen = false }: Props) => {
       onClose={handleClose}
       aria-labelledby="readDialogTitle"
       maxWidth="md"
+      fullWidth
     >
       {!post && <Fragment>{I18n.get('emptyContent')}</Fragment>}
       {post && (
@@ -32,7 +35,7 @@ export const ReadingDialog = ({ post, handleClose, isOpen = false }: Props) => {
           <DialogTitle id="readDialogTitle">{`${post.title} - ${post.date}`}</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              {post.content}
+              {parse(post.content)}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
