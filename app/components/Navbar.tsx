@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
 
 /** Navbar component */
 export const Navbar = () => {
-  const classes = useStyles();
+  const classes = useStyles({});
   return (
     <Fragment>
       <AppBar position="static" className={classes.appbar} data-testid="navbar">
