@@ -1,5 +1,7 @@
 const AWS_API_BASE = 'http://localhost:8081/api/v1';
 
-export const ADD_NEW_POST_API = `${AWS_API_BASE}/post`;
-export const FETCH_POSTS_API = `${AWS_API_BASE}/post`;
+const POST_API = `${AWS_API_BASE}/post`;
+export const ADD_NEW_POST_API = POST_API;
+export const FETCH_POSTS_API = POST_API;
+export const DELETE_POST_API = POST_API;
 export const FETCH_POST_COUNT_API = `${AWS_API_BASE}/post/count`;

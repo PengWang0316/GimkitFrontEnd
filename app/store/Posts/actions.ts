@@ -4,7 +4,7 @@ import {
   FETCH_POSTS_SUCCESS, PostsType, PostsActionType,
   PostType, ADD_NEW_POST_SUCCESS, DELETE_POST_SUCCESS,
 } from './types';
-import { ADD_NEW_POST_API, FETCH_POSTS_API } from '../Urls';
+import { ADD_NEW_POST_API, FETCH_POSTS_API, DELETE_POST_API } from '../Urls';
 
 const fetchPostsSuccess = (posts: PostsType): PostsActionType => ({
   type: FETCH_POSTS_SUCCESS,
@@ -32,6 +32,6 @@ export const addNewPost = (post: PostType) => async (dispatch) => {
 };
 
 export const deletePost = (postId: number) => (dispatch) => {
-  console.log(postId);
+  axios.delete(DELETE_POST_API, { params: { id: postId } });
   dispatch(deletePostSuccess(postId));
 };
