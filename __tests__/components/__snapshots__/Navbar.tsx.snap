@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar snapshot 1`] = `
+<AppBar
+  className="makeStyles-appbar-4"
+  data-testid="navbar"
+  position="static"
+>
+  <Toolbar>
+    Link
+  </Toolbar>
+</AppBar>
+`;
