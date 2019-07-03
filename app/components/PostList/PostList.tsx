@@ -28,6 +28,11 @@ const useStyles = makeStyles({
     width: '100%',
     padding: 15,
   },
+  paginationDiv: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
 });
 
 export const PostList = ({
@@ -72,12 +77,14 @@ export const PostList = ({
         />
       ))}
       {postCount && (
-        <Pagination
-          offset={offset}
-          limit={MAX_POSTS_AMOUNT}
-          total={postCount}
-          onClick={handlePaginationClick}
-        />
+        <div className={classes.paginationDiv}>
+          <Pagination
+            offset={offset}
+            limit={MAX_POSTS_AMOUNT}
+            total={postCount}
+            onClick={handlePaginationClick}
+          />
+        </div>
       )}
       <ReadDialog
         post={currentPost}
