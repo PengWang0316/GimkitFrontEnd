@@ -2,7 +2,7 @@ import React, {
   memo, useEffect, useCallback, useState,
 } from 'react';
 import { connect } from 'react-redux';
-import { Typography, Snackbar } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import I18n from '@kevinwang0316/i18n';
 import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@kevinwang0316/react-materialui-pagination';
@@ -17,6 +17,7 @@ import { fetchPostCount as fetchPostCountAction } from '../../store/PostCount/ac
 import { MAX_POSTS_AMOUNT } from '../../config';
 import DeleteConfirmDialog from './Dialogs/DeleteConfirmDialog';
 import SuccessMessageSnackbar from '../SuccessMessageSnackbar';
+import AddPostDialog from '../AddPostDialog';
 
 interface Props {
   posts: PostsType;
@@ -43,6 +44,7 @@ export const PostList = ({
   const [isOpenRead, setIsOpenRead] = useState(false);
   const [isOpenDelete, setIsOpenDelete] = useState(false);
   const [isOpenSnackbar, setIsOpenSnackbar] = useState(false);
+  const [isOpenEditDialog, setIsOpenEditDialog] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
   const [currentPost, setCurrentPost] = useState(null);
   const [currentPostId, setCurrentPostId] = useState(null);
@@ -63,9 +65,16 @@ export const PostList = ({
 
   const handleSnackbarClose = () => setIsOpenSnackbar(state => !state);
 
+  const handleEditDialogClose = () => setIsOpenEditDialog(state => !state);
+
   const handleSnackBarCallback = (text: string) => {
     setSnackbarMessage(text);
     handleSnackbarClose();
+  };
+
+  const handleEditCallback = (post: PostType) => {
+    setCurrentPost(post);
+    handleEditDialogClose();
   };
 
   // callback for click each item
@@ -96,6 +105,7 @@ export const PostList = ({
           post={post}
           handleClick={itemClickCallback}
           handleDeleteClick={handleDeleteClickCallback}
+          handleEditCallback={handleEditCallback}
         />
       ))}
       {postCount && (
@@ -118,6 +128,11 @@ export const PostList = ({
         isOpen={isOpenDelete}
         handleClose={handleDeleteClose}
         handleSnackBarCallback={handleSnackBarCallback}
+      />
+      <AddPostDialog
+        isOpen={isOpenEditDialog}
+        handleClose={handleEditDialogClose}
+        post={currentPost}
       />
       <SuccessMessageSnackbar
         isOpen={isOpenSnackbar}

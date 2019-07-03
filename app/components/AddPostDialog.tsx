@@ -1,4 +1,6 @@
-import React, { memo, useState, useCallback } from 'react';
+import React, {
+  memo, useState, useCallback, useEffect,
+} from 'react';
 import { connect } from 'react-redux';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {
@@ -9,7 +11,7 @@ import I18n from '@kevinwang0316/i18n';
 import ReactQuill from 'react-quill';
 
 import { PostType } from '../store/Posts/types';
-import { addNewPost as addNewPostAction } from '../store/Posts/actions';
+import { addNewPost as addNewPostAction, updatePost as updatePostAction } from '../store/Posts/actions';
 
 // Css for Quill editor
 require('react-quill/dist/quill.snow.css');
@@ -18,6 +20,9 @@ interface Props {
   isOpen: boolean;
   handleClose: (event: React.MouseEvent) => void;
   addNewPost: (post: PostType) => void;
+  updatePost: (post: PostType) => void;
+  postId?: number;
+  post?: PostType;
 }
 
 const useStyles = makeStyles({
@@ -32,13 +37,22 @@ const useStyles = makeStyles({
   },
 });
 
-export const AddPostDialog = ({ handleClose, isOpen = false, addNewPost }: Props) => {
+export const AddPostDialog = ({
+  handleClose, isOpen = false, addNewPost, post = null, updatePost,
+}: Props) => {
   const classes = useStyles({});
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const [content, setContent] = useState('');
   const [title, setTitle] = useState('');
   const [isSaveAvailable, setIsSaveAvailable] = useState(false);
+
+  useEffect(() => {
+    if (post) {
+      setContent(post.content);
+      setTitle(post.title);
+    }
+  }, [post]);
 
   // handle content change
   const handleContentChange = useCallback((value: string, delta, source, editor) => {
@@ -55,8 +69,14 @@ export const AddPostDialog = ({ handleClose, isOpen = false, addNewPost }: Props
 
   // handle click save button
   const handleSave = () => {
-    const post: PostType = { title, content };
-    addNewPost(post);
+    const newPost: PostType = { title, content };
+    if (!post) {
+      addNewPost(newPost);
+    } else {
+      newPost.id = post.id;
+      newPost.date = post.date;
+      updatePost(newPost);
+    }
     setTitle('');
     setContent('');
     handleClose(null);
@@ -95,5 +115,6 @@ export const AddPostDialog = ({ handleClose, isOpen = false, addNewPost }: Props
 /* istanbul ignore next */
 const mapDispatchToProps = dispatch => ({
   addNewPost: (post: PostType) => dispatch(addNewPostAction(post)),
+  updatePost: (post: PostType) => dispatch(updatePostAction(post)),
 });
 export default connect(null, mapDispatchToProps)(memo(AddPostDialog));

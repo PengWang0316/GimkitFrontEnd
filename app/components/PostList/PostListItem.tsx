@@ -13,6 +13,7 @@ interface Props {
   post: PostType;
   handleClick: (post: PostType) => void;
   handleDeleteClick: (postId: number) => void;
+  handleEditCallback: (post: PostType) => void;
 }
 
 const useStyles = makeStyles({
@@ -50,11 +51,18 @@ const useStyles = makeStyles({
 const MAX_CONTENT_LENGTH = 300;
 const turncate = (text: string): string => text.length < MAX_CONTENT_LENGTH ? text : `${text.slice(0, MAX_CONTENT_LENGTH)}...`;
 
-export const PostListItem = ({ post, handleClick, handleDeleteClick }: Props) => {
+export const PostListItem = ({
+  post, handleClick, handleDeleteClick, handleEditCallback,
+}: Props) => {
   const classes = useStyles({});
   const handleDelete = (event: React.MouseEvent) => {
     event.stopPropagation();
     handleDeleteClick(post.id);
+  };
+
+  const handleEdit = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    handleEditCallback(post);
   };
 
   return (
@@ -72,7 +80,7 @@ export const PostListItem = ({ post, handleClick, handleDeleteClick }: Props) =>
               >
                 {`${post.title} - ${new Date(post.date).toLocaleDateString()}`}
               </Typography>
-              <IconButton size="small" className={classes.editBtn}>
+              <IconButton size="small" className={classes.editBtn} onClick={handleEdit}>
                 <EditIcon className={classes.icon} />
               </IconButton>
               <IconButton size="small" className={classes.deleteBtn} onClick={handleDelete}>

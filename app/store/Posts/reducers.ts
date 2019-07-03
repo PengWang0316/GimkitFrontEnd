@@ -1,5 +1,6 @@
 import {
-  FETCH_POSTS_SUCCESS, ADD_NEW_POST_SUCCESS, PostsType, PostsActionType, DELETE_POST_SUCCESS,
+  FETCH_POSTS_SUCCESS, ADD_NEW_POST_SUCCESS, PostsType, PostsActionType,
+  DELETE_POST_SUCCESS, UPDATE_POST_SUCCESS,
 } from './types';
 
 const Posts = (state: PostsType = null, {
@@ -14,6 +15,14 @@ const Posts = (state: PostsType = null, {
       const newPosts = [];
       state.forEach((item) => {
         if (item.id !== postId) newPosts.push(item);
+      });
+      return newPosts;
+    }
+    case UPDATE_POST_SUCCESS: {
+      const newPosts = [];
+      state.forEach((item) => {
+        if (item.id !== post.id) newPosts.push(item);
+        else newPosts.push({ ...item, content: post.content, title: post.title });
       });
       return newPosts;
     }
