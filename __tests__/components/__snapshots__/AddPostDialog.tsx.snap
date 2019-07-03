@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddPostDialog snapshot 1`] = `
+<Dialog
+  aria-labelledby="addPostDialogTitle"
+  fullScreen={false}
+  maxWidth="md"
+  onClose={[MockFunction]}
+  open={false}
+>
+  <DialogTitle
+    id="addPostDialogTitle"
+  >
+    I18n text
+  </DialogTitle>
+  <DialogContent>
+    <TextField
+      className="makeStyles-title-2"
+      label="I18n text"
+      margin="dense"
+      onChange={[Function]}
+      value=""
+    />
+    <ReactQuill
+      className="makeStyles-editor-1"
+      onChange={[Function]}
+      value=""
+    />
+  </DialogContent>
+  <DialogActions>
+    <Button
+      color="secondary"
+      disabled={true}
+      onClick={[Function]}
+    >
+      I18n text
+    </Button>
+    <Button
+      color="primary"
+      onClick={[MockFunction]}
+    >
+      I18n text
+    </Button>
+  </DialogActions>
+</Dialog>
+`;
+
+exports[`AddPostDialog snapshot with a post 1`] = `
+<Dialog
+  aria-labelledby="addPostDialogTitle"
+  fullScreen={false}
+  maxWidth="md"
+  onClose={[MockFunction]}
+  open={false}
+>
+  <DialogTitle
+    id="addPostDialogTitle"
+  >
+    I18n text
+  </DialogTitle>
+  <DialogContent>
+    <TextField
+      className="makeStyles-title-2"
+      label="I18n text"
+      margin="dense"
+      onChange={[Function]}
+      value=""
+    />
+    <ReactQuill
+      className="makeStyles-editor-1"
+      onChange={[Function]}
+      value=""
+    />
+  </DialogContent>
+  <DialogActions>
+    <Button
+      color="secondary"
+      disabled={true}
+      onClick={[Function]}
+    >
+      I18n text
+    </Button>
+    <Button
+      color="primary"
+      onClick={[MockFunction]}
+    >
+      I18n text
+    </Button>
+  </DialogActions>
+</Dialog>
+`;
+
+exports[`AddPostDialog snapshot without a post 1`] = `
+<Dialog
+  aria-labelledby="addPostDialogTitle"
+  fullScreen={false}
+  maxWidth="md"
+  onClose={[MockFunction]}
+  open={false}
+>
+  <DialogTitle
+    id="addPostDialogTitle"
+  >
+    I18n text
+  </DialogTitle>
+  <DialogContent>
+    <TextField
+      className="makeStyles-title-2"
+      label="I18n text"
+      margin="dense"
+      onChange={[Function]}
+      value=""
+    />
+    <ReactQuill
+      className="makeStyles-editor-1"
+      onChange={[Function]}
+      value=""
+    />
+  </DialogContent>
+  <DialogActions>
+    <Button
+      color="secondary"
+      disabled={true}
+      onClick={[Function]}
+    >
+      I18n text
+    </Button>
+    <Button
+      color="primary"
+      onClick={[MockFunction]}
+    >
+      I18n text
+    </Button>
+  </DialogActions>
+</Dialog>
+`;
