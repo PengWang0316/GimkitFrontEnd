@@ -6,7 +6,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Navbar from './Navbar';
 import { HOME_PAGE_URL } from '../config';
-import LoadingAnimation from './SharedComponents/LoadingAnimation';
 
 const theme = createMuiTheme({
   palette: {
