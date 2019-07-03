@@ -2,7 +2,7 @@ import React, {
   memo, useEffect, useCallback, useState,
 } from 'react';
 import { connect } from 'react-redux';
-import { Typography, Paper } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import I18n from '@kevinwang0316/i18n';
 import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@kevinwang0316/react-materialui-pagination';
@@ -19,7 +19,7 @@ import { MAX_POSTS_AMOUNT } from '../../config';
 interface Props {
   posts: PostsType;
   postCount: PostCountType;
-  fetchPosts: (offset: number) => void;
+  fetchPosts: (offset: number, limit: number) => void;
   fetchPostCount: Function;
 }
 
@@ -40,7 +40,7 @@ export const PostList = ({
 
   // Initial fetching
   useEffect(() => {
-    if (!posts) fetchPosts(0);
+    if (!posts) fetchPosts(0, MAX_POSTS_AMOUNT);
     if (postCount === null) fetchPostCount();
   });
 
@@ -55,7 +55,7 @@ export const PostList = ({
 
   // callback for the pagination button click
   const handlePaginationClick = useCallback((newOffset: number) => {
-    console.log(newOffset);
+    fetchPosts(newOffset, MAX_POSTS_AMOUNT);
     setOffset(newOffset);
   }, []);
 

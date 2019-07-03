@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import {
   List, ListItem, Divider, ListItemText, Typography,
 } from '@material-ui/core';
@@ -50,20 +50,20 @@ export const PostListItem = ({ post, handleClick }: Props) => {
               className={classes.inlineBold}
               color="textPrimary"
             >
-              {`${post.title} - ${post.date}`}
+              {`${post.title} - ${new Date(post.date).toLocaleDateString()}`}
             </Typography>
           )}
           secondary={(
-            <Fragment>
+            <>
               <Typography
                 component="span"
                 variant="body2"
                 className={classes.inline}
                 color="textPrimary"
               >
-                {parse(turncate(post.content))}
+                <div>{parse(turncate(post.content))}</div>
               </Typography>
-            </Fragment>
+            </>
           )}
         />
       </ListItem>

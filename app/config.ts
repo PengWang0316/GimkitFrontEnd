@@ -3,4 +3,4 @@ export const BASE_URL = 'http://localhost:8081/api/v1'; // Development server
 export const HOME_PAGE_URL = '/';
 
 export const DEFAULT_LANGUAGE = 'en';
-export const MAX_POSTS_AMOUNT = 10;
+export const MAX_POSTS_AMOUNT = 5;

@@ -32,7 +32,7 @@ export const ReadingDialog = ({ post, handleClose, isOpen = false }: Props) => {
       {!post && <Fragment>{I18n.get('emptyContent')}</Fragment>}
       {post && (
         <Fragment>
-          <DialogTitle id="readDialogTitle">{`${post.title} - ${post.date}`}</DialogTitle>
+          <DialogTitle id="readDialogTitle">{`${post.title} - ${new Date(post.date).toLocaleDateString()}`}</DialogTitle>
           <DialogContent>
             <DialogContentText>
               {parse(post.content)}
