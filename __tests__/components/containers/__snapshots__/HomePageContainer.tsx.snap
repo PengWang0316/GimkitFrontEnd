@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomePageContainer snapshot 1`] = `
+<Paper
+  className="makeStyles-rootPaper-1"
+>
+  <PostList />
+  <Tooltip
+    placement="left-start"
+    title="I18n text"
+  >
+    <Fab
+      aria-label="Add"
+      className="makeStyles-fab-2"
+      color="secondary"
+      onClick={[Function]}
+      size="medium"
+    >
+      <Add />
+    </Fab>
+  </Tooltip>
+  <AddPostDialog
+    handleClose={[Function]}
+    isOpen={false}
+  />
+</Paper>
+`;

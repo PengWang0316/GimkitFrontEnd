@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-const HomePage = () => {
+export const HomePageContainer = () => {
   const classes = useStyles({});
   const [isOpenAddPost, setIsOpenAddPost] = useState(false);
   const addPostDialogCloseCallback = useCallback(() => setIsOpenAddPost((state: boolean) => !state), []);
@@ -41,4 +41,4 @@ const HomePage = () => {
   );
 };
 
-export default memo(HomePage);
+export default memo(HomePageContainer);

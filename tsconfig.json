@@ -3,7 +3,6 @@
       "outDir": "./tsdist/",
       "sourceMap": true,
       "alwaysStrict": true,
-      // "noImplicitAny": true,
       "removeComments": true,
       "module": "esnext",
       "target": "es5",
@@ -11,7 +10,7 @@
       "allowSyntheticDefaultImports": true,
       "esModuleInterop": true,
       "moduleResolution": "node",
-      "lib": ["es2017", "dom"],
+      "lib": ["es2017", "dom"]
   },
   "include": [
       "./app/**/*"
