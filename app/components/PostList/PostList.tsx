@@ -2,7 +2,7 @@ import React, {
   memo, useEffect, useCallback, useState,
 } from 'react';
 import { connect } from 'react-redux';
-import { Typography } from '@material-ui/core';
+import { Typography, Snackbar } from '@material-ui/core';
 import I18n from '@kevinwang0316/i18n';
 import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@kevinwang0316/react-materialui-pagination';
@@ -16,6 +16,7 @@ import { fetchPosts as fetchPostsAction } from '../../store/Posts/actions';
 import { fetchPostCount as fetchPostCountAction } from '../../store/PostCount/actions';
 import { MAX_POSTS_AMOUNT } from '../../config';
 import DeleteConfirmDialog from './Dialogs/DeleteConfirmDialog';
+import SuccessMessageSnackbar from '../SuccessMessageSnackbar';
 
 interface Props {
   posts: PostsType;
@@ -41,6 +42,8 @@ export const PostList = ({
 }: Props) => {
   const [isOpenRead, setIsOpenRead] = useState(false);
   const [isOpenDelete, setIsOpenDelete] = useState(false);
+  const [isOpenSnackbar, setIsOpenSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
   const [currentPost, setCurrentPost] = useState(null);
   const [currentPostId, setCurrentPostId] = useState(null);
   const [offset, setOffset] = useState(0);
@@ -58,7 +61,12 @@ export const PostList = ({
   // callback for the deletion confirm dialog display
   const handleDeleteClose = () => setIsOpenDelete(state => !state);
 
-  const handleSnackBar = (text: string) => console.log(`Snackbar ${text}`);
+  const handleSnackbarClose = () => setIsOpenSnackbar(state => !state);
+
+  const handleSnackBarCallback = (text: string) => {
+    setSnackbarMessage(text);
+    handleSnackbarClose();
+  };
 
   // callback for click each item
   const itemClickCallback = useCallback((post: PostType) => {
@@ -109,7 +117,12 @@ export const PostList = ({
         postId={currentPostId}
         isOpen={isOpenDelete}
         handleClose={handleDeleteClose}
-        handleSnackBarCallback={handleSnackBar}
+        handleSnackBarCallback={handleSnackBarCallback}
+      />
+      <SuccessMessageSnackbar
+        isOpen={isOpenSnackbar}
+        message={snackbarMessage}
+        handleClose={handleSnackbarClose}
       />
     </div>
   );
