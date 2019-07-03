@@ -16,5 +16,17 @@ describe('HomePageContainer', () => {
   const defaultProps = {};
 
   const getShallowComponent = (props = defaultProps) => shallow(<HomePageContainer {...props} />);
+
+  test('click fab', () => {
+    const component = getShallowComponent();
+    const addPostDialog: any = component.find('AddPostDialog');
+
+    expect(addPostDialog.length).toBe(1);
+    expect(addPostDialog.props().isOpen).toBe(false);
+
+    component.find('Fab').simulate('click');
+    expect((component.find('AddPostDialog') as any).props().isOpen).toBe(true);
+  });
+
   test('snapshot', () => expect(renderer.create(<HomePageContainer />).toJSON()).toMatchSnapshot());
 });
