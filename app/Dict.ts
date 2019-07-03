@@ -11,10 +11,14 @@ const dict: Dictionary = {
     close: 'Close',
     save: 'Save',
     cancel: 'Cancel',
+    delete: 'Delete',
     title: 'Title',
     emptyContent: 'Content is loading....',
     addPost: 'Add Post',
     addPostTitle: 'Add a new post',
+    deleteDialogTitle: 'Deletion Confirm',
+    deleteDialogContent: 'Warning: The post cannot be recoverd after the deletion',
+    deletePostSuccess: 'One post has been deleted successfully',
   },
 };
 
