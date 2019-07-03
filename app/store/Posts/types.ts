@@ -1,5 +1,6 @@
 export const FETCH_POSTS_SUCCESS = 'fetchPostsSuccess';
 export const ADD_NEW_POST_SUCCESS = 'addNewPostSuccess';
+export const DELETE_POST_SUCCESS = 'deletePostSuccess';
 
 export interface PostType {
   id?: number;
@@ -14,4 +15,5 @@ export interface PostsActionType {
   type: string;
   posts?: PostsType;
   post?: PostType;
+  postId?: number;
 }

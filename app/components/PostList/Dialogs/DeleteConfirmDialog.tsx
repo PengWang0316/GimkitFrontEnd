@@ -11,22 +11,22 @@ interface Props {
   isOpen: boolean;
   postId: number;
   handleSnackBarCallback: (text: string) => void;
-  handleCloseCallback: (event: React.MouseEvent) => void;
+  handleClose: (event: React.MouseEvent) => void;
   deletePost: (postId: number) => void;
 }
 
 export const DeleteConfirmDialog = ({
-  isOpen, handleCloseCallback, postId, handleSnackBarCallback, deletePost,
+  isOpen, handleClose, postId, handleSnackBarCallback, deletePost,
 }: Props) => {
   const handleDelete = useCallback(() => {
     deletePost(postId);
-    handleCloseCallback(null);
-    handleSnackBarCallback(I18n('deletePostSuccess'));
+    handleClose(null);
+    handleSnackBarCallback(I18n.get('deletePostSuccess'));
   }, [postId]);
   return (
     <Dialog
       open={isOpen}
-      onClose={handleCloseCallback}
+      onClose={handleClose}
     >
       <DialogTitle>{I18n.get('deleteDialogTitle')}</DialogTitle>
       <DialogContent>
@@ -35,7 +35,7 @@ export const DeleteConfirmDialog = ({
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleCloseCallback} color="primary">
+        <Button onClick={handleClose} color="primary">
           {I18n.get('cancel')}
         </Button>
         <Button onClick={handleDelete} color="primary" autoFocus>
