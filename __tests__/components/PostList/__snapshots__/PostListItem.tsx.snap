@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostListItem snapshot 1`] = `
+<List
+  className="makeStyles-list-2"
+>
+  <ListItem
+    alignItems="center"
+    button={true}
+    onClick={[Function]}
+  >
+    <ListItemText
+      className="makeStyles-itemText-5"
+      primary={
+        <React.Fragment>
+          <Typography
+            className="makeStyles-inlineBold-4"
+            color="textPrimary"
+            component="span"
+            variant="h6"
+          >
+            title - 1/1/2019
+          </Typography>
+          <IconButton
+            className="makeStyles-editBtn-7"
+            onClick={[Function]}
+            size="small"
+          >
+            <EditIcon
+              className="makeStyles-icon-8"
+            />
+          </IconButton>
+          <IconButton
+            className="makeStyles-deleteBtn-6"
+            onClick={[Function]}
+            size="small"
+          >
+            <DeleteIcon
+              className="makeStyles-icon-8"
+            />
+          </IconButton>
+        </React.Fragment>
+      }
+      secondary={
+        <React.Fragment>
+          <Typography
+            className="makeStyles-inline-3"
+            color="textPrimary"
+            component="span"
+            variant="body2"
+          >
+            <div>
+              Parsed value
+            </div>
+          </Typography>
+        </React.Fragment>
+      }
+    />
+  </ListItem>
+  <Divider
+    component="li"
+  />
+</List>
+`;

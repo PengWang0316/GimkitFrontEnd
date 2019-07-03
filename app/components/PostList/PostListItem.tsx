@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  List, ListItem, Divider, ListItemText, Typography, IconButton, Icon,
+  List, ListItem, Divider, ListItemText, Typography, IconButton,
 } from '@material-ui/core';
 import { Delete as DeleteIcon, Edit as EditIcon } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
