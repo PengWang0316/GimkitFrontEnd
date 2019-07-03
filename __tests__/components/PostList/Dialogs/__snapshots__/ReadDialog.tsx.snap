@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReadDialog snapshot 1`] = `
+<Dialog
+  aria-labelledby="readDialogTitle"
+  fullScreen={false}
+  fullWidth={true}
+  maxWidth="md"
+  onClose={[MockFunction]}
+  open={true}
+>
+  <DialogTitle
+    id="readDialogTitle"
+  >
+    title - 1/1/2019
+  </DialogTitle>
+  <DialogContent>
+    <DialogContentText>
+      Parsed value
+    </DialogContentText>
+  </DialogContent>
+  <DialogActions>
+    <Button
+      color="primary"
+      onClick={[MockFunction]}
+    >
+      I18n text
+    </Button>
+  </DialogActions>
+</Dialog>
+`;

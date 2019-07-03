@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeleteConfirmDialog snapshot 1`] = `
+<Dialog
+  onClose={[MockFunction]}
+  open={true}
+>
+  <DialogTitle>
+    I18n text
+  </DialogTitle>
+  <DialogContent>
+    <DialogContentText>
+      I18n text
+    </DialogContentText>
+  </DialogContent>
+  <DialogActions>
+    <Button
+      color="primary"
+      onClick={[MockFunction]}
+    >
+      I18n text
+    </Button>
+    <Button
+      autoFocus={true}
+      color="primary"
+      onClick={[Function]}
+    >
+      I18n text
+    </Button>
+  </DialogActions>
+</Dialog>
+`;

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SuccessMessageSnackbar snapshot 1`] = `
+<Snackbar
+  anchorOrigin={
+    Object {
+      "horizontal": "center",
+      "vertical": "bottom",
+    }
+  }
+  autoHideDuration={3000}
+  onClose={[MockFunction]}
+  open={true}
+>
+  <SnackbarContent
+    action={
+      Array [
+        <IconButton
+          aria-label="Close"
+          color="inherit"
+          onClick={[MockFunction]}
+        >
+          <CloseIcon />
+        </IconButton>,
+      ]
+    }
+    className="makeStyles-success-1"
+    message={
+      <span>
+        <Icon />
+        message
+      </span>
+    }
+  />
+</Snackbar>
+`;

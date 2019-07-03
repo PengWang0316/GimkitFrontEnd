@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostList snapshot 1`] = `
+<div
+  className="makeStyles-rootPaper-1"
+>
+  <Typography
+    component="h4"
+    variant="h5"
+  >
+    I18n text
+  </Typography>
+  <PostListItem
+    handleClick={[Function]}
+    handleDeleteClick={[Function]}
+    handleEditCallback={[Function]}
+    post={
+      Object {
+        "content": "content",
+        "date": "01/01/2019",
+        "id": 1,
+        "title": "title",
+      }
+    }
+  />
+  <div
+    className="makeStyles-paginationDiv-2"
+  >
+    <Pagination
+      limit={5}
+      offset={0}
+      onClick={[Function]}
+      total={1}
+    />
+  </div>
+  <ReadDialog
+    handleClose={[Function]}
+    isOpen={false}
+    post={null}
+  />
+  <DeleteConfirmDialog
+    handleClose={[Function]}
+    handleSnackBarCallback={[Function]}
+    isOpen={false}
+    postId={null}
+  />
+  <AddPostDialog
+    handleClose={[Function]}
+    isOpen={false}
+    post={null}
+  />
+  <SuccessMessageSnackbar
+    handleClose={[Function]}
+    isOpen={false}
+    message=""
+  />
+</div>
+`;

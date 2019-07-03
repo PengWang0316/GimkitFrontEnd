@@ -16,7 +16,7 @@ interface Props {
   handleClose: (event: React.MouseEvent) => void;
 }
 
-export const ReadingDialog = ({ post, handleClose, isOpen = false }: Props) => {
+export const ReadDialog = ({ post, handleClose, isOpen = false }: Props) => {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -49,4 +49,4 @@ export const ReadingDialog = ({ post, handleClose, isOpen = false }: Props) => {
   );
 };
 
-export default memo(ReadingDialog);
+export default memo(ReadDialog);
