@@ -28,11 +28,10 @@ const render = (Component) => {
     document.getElementById('app'),
   );
 };
-render(App;
+render(App);
 
 // Webpack Hot Module Replacement API
 if (module.hot) module.hot.accept('./components/App', () => render(App));
 
 // Registering a service worker in the production enviroment.
 registerServiceWorker();
-
