@@ -48,6 +48,5 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest || []);
 
 /* NetworkFirst strategy for REST API call. */
 // const apiCallStrategy = workbox.strategies.networkFirst();
-// workbox.routing.registerRoute(/^https:\/\/orderstaker\.kevin-project\.com:8080\/.*/, apiCallStrategy);
 // workbox.routing.registerRoute(/^https:\/\/orderstaker\.kevin-project\.com/, apiCallStrategy);
 // workbox.routing.registerRoute(/^http:\/\/orderstaker\.kevin-project\.com/, apiCallStrategy);
